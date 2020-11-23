@@ -39,7 +39,7 @@ data_ex = pd.read_excel(name+'.xlsx')
 data = data_ex.values;
 
 
-#hyperparameters
+#hyperparameters  k ks qs C Gamma K-value MLS M
 parameter['Cancer_dataset'] = [9, 10, 0.5, 0.8, 0.5, 1, 3,20];
 parameter['Vertebral_Column'] = [5, 15, 0.7, 1.0, 1.0, 9, 13,6];#
 parameter['Transfusion'] = [5, 15, 0.7, 1.0, 1.0, 9, 13,8];
@@ -110,8 +110,6 @@ for rstate in range(6):
 
         y_temp = tf.nn.sigmoid(k1 * 1.0 * (tf.multiply(X, W) - q))
         y = tf.reduce_prod((y_temp), axis=2)
-        # y = tf.reduce_prod(tf.sigmoid(1*(tf.multiply(X, W) + q)), axis=2)
-        # y1 = (tf.reduce_sum(y, axis=1, keepdims=True))
         y1 = (tf.reduce_sum(y, axis=1, keepdims=True))
         y2 = tf.nn.sigmoid(k2*1.0*(y1-qs))
         LOSS = []
